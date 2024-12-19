@@ -16,10 +16,17 @@ function App() {
     setTaskData((prevTasks) => prevTasks.filter((_, i) => i !== indexToRemove)); // Safely update state
 
   }
+
+  function editTask(indexToUpdate,updatedValue) {
+     const updatedTaskData = [...taskData];
+     updatedTaskData[indexToUpdate] = updatedValue;
+     setTaskData(updatedTaskData);
+   }
+
   return (
     <div>
       <Header addTask={addTask}></Header>
-      <List taskData={taskData} deleteTask={deleteTask}></List>
+      <List taskData={taskData} deleteTask={deleteTask} editTask={editTask}></List>
     </div>
   );
 }
