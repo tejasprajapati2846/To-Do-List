@@ -1,13 +1,17 @@
-function List({ taskData, deleteTask }) {
+import TaskActionModal from "./Alert";
+function List({ taskData, deleteTask, editTask }) {
   return (
     <ul id="myUL">
       {taskData.length > 0 ? (
         taskData.map((item, index) => (
           <li key={index}>
             {item}
-            <span className="close" onClick={() => deleteTask(index)}>
-              ×
-            </span>
+            <TaskActionModal
+              index={index}
+              taskData={taskData}
+              deleteTask={deleteTask}
+              editTask={editTask}
+            />
           </li>
         ))
       ) : (
